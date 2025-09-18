@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xampp-php
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - my-network
+    restart: always
+
+  db:
+    image: mysql:5.7
+    container_name: xampp-mysql
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  # Consenti password vuota
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+    networks:
+      - my-network
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db  # Nome host del container MySQL
+      PMA_USER: root  # Usa 'root' come utente
+      PMA_PASSWORD: ""  # La password per root è vuota
+    depends_on:
+      - db
+    networks:
+      - my-network
+    restart: always
+
+networks:
+  my-network:
+    driver: bridge
+
+
+
+
+
