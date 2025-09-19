@@ -14,4 +14,4 @@ Copyright (C) 2025  Mirko Scovacricchi,
 
 Sviluppato con contributi di collaboratori vari
 
-Tutti i programmi ed i file contenuti in questo archivio/directory sono rilasciati sotto licenza GPL v.3
+Tutti i programmi ed i file contenuti in questo archivio/directory sono rilasciati sotto licenza GPL v.3  https://www.gnu.org/licenses/gpl-3.0.en.html
